@@ -10,6 +10,12 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'GPA',
+        'HoursAchieved',
+        'AdvisorId',
+        'PersonId'
+    ];
     public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class);

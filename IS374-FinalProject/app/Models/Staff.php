@@ -10,6 +10,13 @@ class Staff extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'Title',
+        'EmploymentType',
+        'PayRate',
+        'Salary',
+        'PersonId'
+    ];
     public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
