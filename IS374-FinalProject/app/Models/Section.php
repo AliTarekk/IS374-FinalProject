@@ -19,4 +19,9 @@ class Section extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function staff(): BelongsTo
+    {
+        return $this->belongsTo(Staff::class);
+    }
 }
