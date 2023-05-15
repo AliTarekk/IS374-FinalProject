@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id('StudentID');
+            $table->id('StudentId');
             $table->decimal('GPA', $precision = 3, $scale = 2); // precision (total digits) and scale (decimal digits)
             // $table->double('GPA', 3, 2); 
             $table->integer('HoursAchieved');
-            $table->foreign('AdvisorID')->references('AdvisorID')->on('FullTimeAdvisor');
-            $table->foreign('PersonID')->references('PersonID')->on('Person');
+            $table->foreign('AdvisorId')->references('AdvisorId')->on('FullTimeAdvisor');
+            $table->foreign('PersonId')->references('PersonId')->on('people');
             $table->timestamps();
         });
     }
