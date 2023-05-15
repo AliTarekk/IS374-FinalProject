@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Section extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'MaxStudents',
         'Day',
@@ -17,6 +18,7 @@ class Section extends Model
         'CourseCode',
         'RoomNumber'
     ];
+    
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);

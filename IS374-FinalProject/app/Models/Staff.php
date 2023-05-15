@@ -17,6 +17,7 @@ class Staff extends Model
         'Salary',
         'PersonId'
     ];
+    
     public function sections(): HasMany
     {
         return $this->hasMany(Section::class);

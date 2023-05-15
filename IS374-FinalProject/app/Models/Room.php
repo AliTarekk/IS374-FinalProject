@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Room extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'MaxCapacity'
     ];
+    
     public function section(): HasOne
     {
         return $this->hasOne(Section::class);
