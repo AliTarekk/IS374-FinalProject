@@ -11,6 +11,14 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'CreditHours',
+        'MinStudents',
+        'CourseTitle',
+        'DepartmentId',
+        'CoordinatorId'
+    ];
+
     public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
