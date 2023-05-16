@@ -11,9 +11,9 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Student $student)
     {
-        //
+        return view('', ['products' => Student::all()->sortBy('StudentId')]);
     }
 
     /**
@@ -21,7 +21,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -29,7 +29,19 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        $validated = $request->validate([
+			'HoursAchieved' => 'required|numeric|min:0|max:200',
+            'AdvisorId' => 'required', //needs exists:Advisor, id
+            'PersonId' => 'required|exists:people, PersonId',
+        ]);
+
+        Student::create([
+            'HoursAchieved' => $validated['HoursAchieved'],
+            'AdvisorId' => $validated['AdvisorId'],
+            'PersonId' => $validated['PersonId'],
+        ]);
+
+        return redirect()->back()->with('status',"Student Inserted Successfully");
     }
 
     /**
@@ -37,7 +49,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('', ['student' => $student]);
     }
 
     /**
@@ -45,7 +57,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('', ['student' => $student]);
     }
 
     /**
@@ -53,7 +65,16 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $validated = $request->validate([
+            'GPA' => 'numeric|min:1.0|max:4.0',
+			'HoursAchieved' => 'required|numeric|min:0|max:200',
+            'AdvisorId' => 'required', //needs exists:Advisor, id
+            'PersonId' => 'required|exists:people, PersonId',
+        ]);
+
+        $student->update($validated);
+
+        return redirect()->back()->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +82,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        Student::destroy($student->id);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }
