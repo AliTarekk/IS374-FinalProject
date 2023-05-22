@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Enroll;
 use App\Models\Student;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -13,7 +15,8 @@ class StudentController extends Controller
      */
     public function index(Student $student)
     {
-        return view('', ['products' => Student::all()->sortBy('StudentId')]);
+        $students = Student::all()->sortBy('StudentId');
+        return view('', ['students' => $students]);
     }
 
     /**
@@ -85,5 +88,43 @@ class StudentController extends Controller
         Student::destroy($student->id);
 
         return redirect()->back()->with('status',"Record Deleted Successfully");
+    }
+
+    public function add_enroll(Enroll $enroll, Request $request)
+    {
+        $validated = $request->validate([
+            'StudentId' => 'required|exists:students, StudentId',
+			'CourseCode' => 'required|exists:courses, CourseCode',
+            'FirstMidterm' => 'required|min:0|max:30',
+            'SecondMidterm' => 'required|min:0|max:20',
+            'CourseWork' => 'required|min:0|max:10',
+            'Grade' => 'required',
+        ]);
+        $enroll->create($validated);
+        return view('', ['enroll' => Enroll::all()->sortBy('CourseCode')]);
+    }
+
+    public function enroll(Enroll $enroll, Request $request){
+        $validated = $request->validate([
+            'StudentId' => 'required|exists:students, StudentId',
+			'CourseCode' => 'required|exists:courses, CourseCode',
+            'FirstMidterm' => 'required|min:0|max:30',
+            'SecondMidterm' => 'required|min:0|max:20',
+            'CourseWork' => 'required|min:0|max:10',
+            'Grade' => 'required',
+        ]);
+
+        $enroll->update($validated);
+
+        return redirect()->back()->with('status',"Record Updated Successfully");
+    }
+
+    public function index_enroll(Student $student)
+    {
+        $students = Student::with('courses')->get();
+
+        foreach ($students->courses as $course) {
+            echo $course->enroll->created_at;
+        }
     }
 }
