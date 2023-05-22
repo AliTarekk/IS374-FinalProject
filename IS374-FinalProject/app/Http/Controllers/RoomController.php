@@ -13,7 +13,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        $rooms = Room::all()->sortBy('RoomNumber');
+        return view('', ['rooms' => $rooms]);
     }
 
     /**
@@ -21,7 +22,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -29,7 +30,12 @@ class RoomController extends Controller
      */
     public function store(StoreRoomRequest $request)
     {
-        //
+        $validated = $request->validate([
+			'MaxCapacity' => 'required|string|numeric|min:10|max:30'
+        ]);
+
+        //fe satr naaa's plus nkhale el name lowercase kolo abl ma a-store fe el db
+        return redirect()->back()->with('status',"Student Inserted Successfully");
     }
 
     /**
@@ -37,7 +43,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return view('', ['room' => $room]);
     }
 
     /**
@@ -45,7 +51,7 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('', ['room' => $room]);
     }
 
     /**
@@ -53,7 +59,13 @@ class RoomController extends Controller
      */
     public function update(UpdateRoomRequest $request, Room $room)
     {
-        //
+        $validated = $request->validate([
+			'MaxCapacity' => 'required|string|numeric|min:10|max:30'
+        ]);
+
+        $room->update($validated);
+
+        return redirect()->back()->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +73,8 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        Room::destroy($room->id);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }
