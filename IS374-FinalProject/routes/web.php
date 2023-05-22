@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
@@ -36,3 +37,12 @@ Route::get('/courses/{course}', [CourseController::class, 'show'])->name('course
 Route::get('/courses/{course}/edit', [CourseController::class, 'edit'])->name('courses.edit');
 Route::put('/courses/{course}', [CourseController::class, 'update'])->name('courses.update');
 Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->name('courses.destroy');
+
+// add endpoints for rooms
+Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
+Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
+Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
+Route::get('/rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
+Route::get('/rooms/{room}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
+Route::put('/rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
+Route::delete('/rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
