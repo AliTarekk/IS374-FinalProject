@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,15 @@ Route::get('/faculties/{faculty}', [FacultyController::class, 'show'])->name('fa
 Route::get('/faculties/{faculty}/edit', [FacultyController::class, 'edit'])->name('faculties.edit');
 Route::put('/faculties/{faculty}', [FacultyController::class, 'update'])->name('faculties.update');
 Route::delete('/faculties/{faculty}', [FacultyController::class, 'destroy'])->name('faculties.destroy');
+
+// add endpoints for departments
+Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
+Route::get('/departments/create', [DepartmentController::class, 'create'])->name('departments.create');
+Route::post('/departments', [DepartmentController::class, 'store'])->name('departments.store');
+Route::get('/departments/{department}', [DepartmentController::class, 'show'])->name('departments.show');
+Route::get('/departments/{department}/edit', [DepartmentController::class, 'edit'])->name('departments.edit');
+Route::put('/departments/{department}', [DepartmentController::class, 'update'])->name('departments.update');
+Route::delete('/departments/{department}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
 
 // add endpoints for courses
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
