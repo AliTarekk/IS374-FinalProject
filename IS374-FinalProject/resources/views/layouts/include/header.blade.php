@@ -14,6 +14,8 @@
     <link rel="shortcut icon" href="{{asset('/build/assets/images/fav.ico')}}" type="image/x-icon">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    {{-- BOOTSTRAP --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FONTAWESOME ICONS -->
     <link rel="stylesheet" href="{{asset('/build/assets/css/font-awesome.min.css')}}">
     <!-- ALL CSS FILES -->

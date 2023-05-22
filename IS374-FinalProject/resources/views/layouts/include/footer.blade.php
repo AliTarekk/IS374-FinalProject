@@ -1,6 +1,6 @@
 <!--HEADER SECTION-->
 <section class="wed-hom-footer">
-    <div class="container">
+    <div class="container mt-5">
         <!--<div class="row">
             <div class="col-md-12">
             <h4>About Wedding Planner</h4>
@@ -273,6 +273,7 @@
 <script src="{{asset('/build/assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/build/assets/js/materialize.min.js')}}"></script>
 <script src="{{asset('/build/assets/js/custom.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 
