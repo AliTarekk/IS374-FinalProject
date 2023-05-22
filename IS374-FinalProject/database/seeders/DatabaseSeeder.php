@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PersonSeeder::class,
             StudentSeeder::class,
+            FacultySeeder::class,
+            DepartmentSeeder::class,
+            CourseSeeder::class,
+            enrollSeeder::class,
+
         ]);
     }
 }

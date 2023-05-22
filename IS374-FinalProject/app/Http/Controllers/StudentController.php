@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Course;
 use App\Models\Enroll;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -90,18 +91,22 @@ class StudentController extends Controller
         return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 
-    public function add_enroll(Enroll $enroll, Request $request)
+    public function create_enroll(Enroll $enroll, Request $request)
     {
+        $courses = Course::all();
+        return view('layouts.include.student.enroll', compact('courses'));
+    }
+
+    public function store_enroll(Enroll $enroll, Request $request)
+    {
+        // session('StudentId', 1);
+        // dd(session());
         $validated = $request->validate([
-            'StudentId' => 'required|exists:students, StudentId',
-			'CourseCode' => 'required|exists:courses, CourseCode',
-            'FirstMidterm' => 'required|min:0|max:30',
-            'SecondMidterm' => 'required|min:0|max:20',
-            'CourseWork' => 'required|min:0|max:10',
-            'Grade' => 'required',
+			'CourseCode' => 'required|exists:courses,CourseCode',
         ]);
+        // dd($enroll);
         $enroll->create($validated);
-        return view('', ['enroll' => Enroll::all()->sortBy('CourseCode')]);
+        return view('enroll-show', ['enroll' => Enroll::all()->sortBy('CourseCode')])->with('success', "Course was Added Successfully");
     }
 
     public function enroll(Enroll $enroll, Request $request){
@@ -121,10 +126,10 @@ class StudentController extends Controller
 
     public function index_enroll(Student $student)
     {
-        $students = Student::with('courses')->get();
-
-        foreach ($students->courses as $course) {
-            echo $course->enroll->created_at;
-        }
+        // $students = Student::with('courses')->get();
+        // $students = Student::all();
+        // foreach ($students->courses as $course) {
+        //     echo $course->enrolls->created_at;
+        // }
     }
 }

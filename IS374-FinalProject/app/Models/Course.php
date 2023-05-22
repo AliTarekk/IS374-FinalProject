@@ -12,12 +12,14 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'CourseCode';
+
     protected $fillable = [
         'CreditHours',
         'MinStudents',
         'CourseTitle',
         'DepartmentId',
-        'CoordinatorId'
+        // 'CoordinatorId'
     ];
 
     public function sections(): HasMany
