@@ -14,12 +14,18 @@ return new class extends Migration
         // pivot table to map many-to-many relationship course_student
         Schema::create('enroll', function (Blueprint $table) {
             $table->id();
-            $table->foreign('StudentId')->references('StudentId')->on('students');
-            $table->foreign('CourseCode')->references('CourseCode')->on('courses');
+            // $table->foreign('StudentId')->references('StudentId')->on('students');
+            $table->foreignId('StudentId')->constrained(
+                table: 'students', column: 'StudentId',
+            );
+            // $table->foreign('CourseCode')->references('CourseCode')->on('courses');
+            $table->foreignId('CourseCode')->constrained(
+                table: 'courses', column: 'CourseCode',
+            );
             $table->double('FirstMidterm');
             $table->double('SecondMidterm');
             $table->double('CourseWork');
-            $table->enum('Grade', ['A', 'B', 'C', 'D', 'F']);
+            $table->enum('Grade', ['A', 'B', 'C', 'D', 'F', 'U']);
             $table->timestamps();
         });
     }

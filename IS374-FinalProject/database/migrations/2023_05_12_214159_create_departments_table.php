@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id('DepartmentId');
             $table->string('Name');
-            $table->foreign('FacultyId')->references('FacultyId')->on('faculties');
+            // $table->foreign('FacultyId')->references('FacultyId')->on('faculties');
+            $table->foreignId('FacultyId')->constrained(
+                table: 'faculties', column: 'FacultyId',
+            );
             //$table->foreign('FullTimeDepartmentHead')->references('StaffId')->on('staff');
             $table->timestamps();
         });

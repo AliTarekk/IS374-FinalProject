@@ -16,9 +16,12 @@ class Student extends Model
         'AdvisorId',
         'PersonId'
     ];
-    
+
     public function courses(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class)->as('enroll')->withPivot([
+            'Grade','FirstMidterm','SecondMidterm','CourseWork', //, 'created_at', 'updated_at'
+        ])->withTimestamps();
     }
+
 }

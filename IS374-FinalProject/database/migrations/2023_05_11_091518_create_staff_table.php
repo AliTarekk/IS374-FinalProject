@@ -18,7 +18,11 @@ return new class extends Migration
             $table->enum('EmploymentType', ['PartTime', 'FullTime']);
             $table->decimal('PayRate', $precision = 6, $scale = 2);
             $table->decimal('Salary', $precision = 10, $scale = 2);
-            $table->foreign('PersonId')->references('PersonId')->on('people');
+            // $table->foreign('PersonId')->references('PersonId')->on('people');
+            $table->foreignId('PersonId')->constrained(
+                table: 'people', column: 'PersonId',
+            );
+            // $table->foreignId('PersonId')->constrained('people')->onDelete('cascade');
             $table->timestamps();
         });
     }
