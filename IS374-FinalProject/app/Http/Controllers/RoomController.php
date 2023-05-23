@@ -13,7 +13,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        $rooms = Room::all()->sortBy('RoomNumber');
+        return view('layouts.include.admin.rooms.index', ['rooms' => $rooms]);
     }
 
     /**
@@ -21,7 +22,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.include.admin.rooms.create');
     }
 
     /**
@@ -29,7 +30,14 @@ class RoomController extends Controller
      */
     public function store(StoreRoomRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'RoomNumber' => 'required|numeric',
+			'MaxCapacity' => 'required|numeric|min:10|max:1000'
+        ]);
+
+        Room::create($validated);
+        
+        return redirect()->route('rooms.index')->with('status',"Room Inserted Successfully");
     }
 
     /**
@@ -37,7 +45,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return view('layouts.include.admin.rooms.show', ['room' => $room]);
     }
 
     /**
@@ -45,7 +53,7 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('layouts.include.admin.rooms.edit', compact('room'));
     }
 
     /**
@@ -53,7 +61,14 @@ class RoomController extends Controller
      */
     public function update(UpdateRoomRequest $request, Room $room)
     {
-        //
+        $validated = $request->validate([
+            'RoomNumber' => 'required|numeric',
+			'MaxCapacity' => 'required|numeric|min:10|max:1000'
+        ]);
+
+        $room->update($validated);
+
+        return redirect()->route('rooms.index')->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +76,8 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        Room::destroy($room->RoomNumber);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }

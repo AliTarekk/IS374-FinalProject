@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -23,10 +24,12 @@ class DatabaseSeeder extends Seeder
             PersonSeeder::class,
             StudentSeeder::class,
             StaffSeeder::class,
-            FacultySeeder::class,
-            DepartmentSeeder::class,
             CourseSeeder::class,
-            EnrollSeeder::class
+            EnrollSeeder::class,
+            FacultySeeder::class,
+            RoomSeeder::class,
+            SectionSeeder::class,
+            DepartmentSeeder::class,
         ]);
     }
 }

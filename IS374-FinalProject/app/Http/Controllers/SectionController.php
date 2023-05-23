@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
@@ -13,7 +14,8 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $sections = Section::all()->sortBy('SectionId');
+        return view('layouts.include.admin.sections.index', ['sections' => $sections]);
     }
 
     /**
@@ -21,7 +23,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.include.admin.sections.create');
     }
 
     /**
@@ -29,7 +31,26 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        //
+        $validated = $request->validate([
+			'MaxStudents'=>'required|numeric|min:10|max:30',
+        'Day'=>'required|string',
+        'Period'=>'required|numeric|min:1|max:6',
+        'StaffId'=> 'required|exists:staff,StaffId',
+        'CourseCode'=> 'required|exists:courses,CourseCode',
+        'RoomNumber'=> 'required|exists:rooms,RoomNumber'
+        ]);
+
+
+        /*
+        //$sections=[SectionController::class,'index'];
+        $sections=index();
+        if($request-> 'Period' == $sections->"Period" && $request->'RoomNumber' == $sections->"RoomNumber"){
+               //redirect with not validated
+        }
+        */
+        Section::create($validated);
+        
+        return redirect()->route('sections.index')->with('status',"Section Inserted Successfully");
     }
 
     /**
@@ -37,7 +58,7 @@ class SectionController extends Controller
      */
     public function show(Section $section)
     {
-        //
+        return view('layouts.include.admin.sections.show', ['section' => $section]);
     }
 
     /**
@@ -45,7 +66,7 @@ class SectionController extends Controller
      */
     public function edit(Section $section)
     {
-        //
+        return view('layouts.include.admin.sections.edit', compact('section'));
     }
 
     /**
@@ -53,7 +74,18 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        $validated = $request->validate([
+			'MaxStudents'=>'required|numeric|min:10|max:30',
+        'Day'=>'required|string',//enum
+        'Period'=>'required|numeric|min:1|max:6',
+        'StaffId'=> 'required|exists:staff,StaffId',
+        'CourseCode'=> 'required|exists:courses,CourseCode',
+        'RoomNumber'=> 'required|exists:rooms,RoomNumber'
+        ]);
+
+        $section->update($validated);
+
+        return redirect()->route('sections.index')->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +93,8 @@ class SectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        //
+        Section::destroy($section->SectionId);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }

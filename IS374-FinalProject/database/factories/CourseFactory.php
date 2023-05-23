@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Department;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
@@ -17,10 +18,10 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'CreditHours' => $this->faker->randomFloat(3, 1.5, 4.0),
-            'MinStudents' => $this->faker->numberBetween(15, 30),
-            'CourseTitle' => $this->faker->name(),
-            'DepartmentId' => $this->faker->numberBetween(1, 10),
+            'CourseTitle' => $this->faker->name,
+            'CreditHours' => $this->faker->randomNumber(),
+            'MinStudents' => $this->faker->randomNumber(),
+            'DepartmentId' => $this->faker->randomElement(Department::pluck('DepartmentId')->toArray(),),
         ];
     }
 }

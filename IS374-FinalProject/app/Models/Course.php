@@ -12,6 +12,8 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'CourseCode';
+
     protected $fillable = [
         'CreditHours',
         'MinStudents',
@@ -31,7 +33,7 @@ class Course extends Model
     }
     public function deparment(): BelongsTo
     {
-        return $this->belongsTo(department::class);
+        return $this->belongsTo(department::class, 'DepartmentId');
     }
     
 }

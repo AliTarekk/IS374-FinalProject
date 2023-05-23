@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\department;
+use App\Models\Faculty;
 use App\Http\Requests\StoredepartmentRequest;
 use App\Http\Requests\UpdatedepartmentRequest;
 
@@ -13,7 +14,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = department::all()->sortBy('DepartmentId');
+        // return view('', ['departments' => $departments]);
+        return view('layouts.include.admin.departments.index',compact('departments'));
     }
 
     /**
@@ -21,7 +24,9 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        // the view should contain data of faculties to be selected from
+        $faculties = Faculty::all()->sortBy('FacultyId');
+        return view('layouts.include.admin.departments.create', ['faculties' => $faculties]);
     }
 
     /**
@@ -29,7 +34,17 @@ class DepartmentController extends Controller
      */
     public function store(StoredepartmentRequest $request)
     {
-        //
+        $validated = $request->validate(
+            [
+                'Name' => 'required|string',
+                'FacultyId' => 'required|exists:faculties,FacultyId'
+            ]
+        );
+
+        department::create($validated);
+
+        //fe satr naaa's plus nkhale el name lowercase kolo abl ma a-store fe el db
+        return redirect()->route('departments.index')->with('status',"Student Inserted Successfully");
     }
 
     /**
@@ -37,7 +52,7 @@ class DepartmentController extends Controller
      */
     public function show(department $department)
     {
-        //
+        return view('layouts.include.admin.departments.show', ['department' => $department]);
     }
 
     /**
@@ -45,7 +60,8 @@ class DepartmentController extends Controller
      */
     public function edit(department $department)
     {
-        //
+        $faculties = Faculty::all()->sortBy('FacultyId');
+        return view('layouts.include.admin.departments.edit', ['department' => $department, 'faculties' => $faculties]);
     }
 
     /**
@@ -53,7 +69,14 @@ class DepartmentController extends Controller
      */
     public function update(UpdatedepartmentRequest $request, department $department)
     {
-        //
+        $validated = $request->validate([
+			'Name' => 'required|string',
+            'FacultyId' => 'required|exists:faculties,FacultyId'
+        ]);
+
+        $department->update($validated);
+
+        return redirect()->route('departments.index')->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +84,8 @@ class DepartmentController extends Controller
      */
     public function destroy(department $department)
     {
-        //
+        department::destroy($department->DepartmentId);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }

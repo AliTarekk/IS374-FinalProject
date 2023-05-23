@@ -9,6 +9,7 @@ class Person extends Model
 {
     use HasFactory;
 
+    protected $primaryKey='PersonId';
     protected $fillable = [
         'FirstName',
         'LastName',
