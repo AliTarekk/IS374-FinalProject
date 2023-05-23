@@ -34,10 +34,12 @@ class DepartmentController extends Controller
      */
     public function store(StoredepartmentRequest $request)
     {
-        $validated = $request->validate([
-			'Name' => 'required|string',
-            'FacultyId' => 'required|exists:faculties,FacultyId'
-        ]);
+        $validated = $request->validate(
+            [
+                'Name' => 'required|string',
+                'FacultyId' => 'required|exists:faculties,FacultyId'
+            ]
+        );
 
         department::create($validated);
 
