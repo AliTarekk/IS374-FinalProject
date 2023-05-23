@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::get('/admin', function () {
     return view('admin');
 })->name("admin");
 
+<<<<<<< HEAD
 Route::get('/admin_all_course', function () {
     return view('admin_all_course');
 })->name("admin_all_course");
@@ -52,4 +54,12 @@ Route::get('/admin_details_student', function () {
 //Route::get('/destroy/{Id}', [CartController::class, 'destroy'])->name('destroy_student');
 //Route::get('/cart', [CartController::class, 'add'])->name('addcart');
 //Route::get('/editCart/{rowId}', [CartController::class, 'edit'])->name('editCart');
+=======
+Route::get('/student/dashboard/{id}', [StudentController::class, 'index_enroll'])->name("student.dashboard");
+
+Route::get('/student/enroll', [StudentController::class, 'create_enroll'])->name("student.enroll");
+Route::get('/student/enroll/index', [StudentController::class, 'index_enroll'])->name("student.index");
+Route::get('/student/enroll/add', [StudentController::class, 'add_enroll'])->name("student.add");
+Route::post('/student/enroll/store', [StudentController::class, 'store_enroll'])->name("student.store");
+>>>>>>> 0fc0e58296fadf3c92f2abf04059ec66a6e054f8
 
