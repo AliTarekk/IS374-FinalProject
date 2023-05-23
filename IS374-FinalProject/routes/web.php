@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
@@ -56,3 +59,30 @@ Route::get('/rooms/{room}', [RoomController::class, 'show'])->name('rooms.show')
 Route::get('/rooms/{room}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
 Route::put('/rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
 Route::delete('/rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
+
+// add endpoints for sections
+Route::get('/sections', [SectionController::class, 'index'])->name('sections.index');
+Route::get('/sections/create', [SectionController::class, 'create'])->name('sections.create');
+Route::post('/sections', [SectionController::class, 'store'])->name('sections.store');
+Route::get('/sections/{section}', [SectionController::class, 'show'])->name('sections.show');
+Route::get('/sections/{section}/edit', [SectionController::class, 'edit'])->name('sections.edit');
+Route::put('/sections/{section}', [SectionController::class, 'update'])->name('sections.update');
+Route::delete('/sections/{section}', [SectionController::class, 'destroy'])->name('sections.destroy');
+
+// add endpoints for people
+Route::get('/people', [PersonController::class, 'index'])->name('people.index');
+Route::get('/people/create', [PersonController::class, 'create'])->name('people.create');
+Route::post('/people', [PersonController::class, 'store'])->name('people.store');
+Route::get('/people/{person}', [PersonController::class, 'show'])->name('people.show');
+Route::get('/people/{person}/edit', [PersonController::class, 'edit'])->name('people.edit');
+Route::put('/people/{person}', [PersonController::class, 'update'])->name('people.update');
+Route::delete('/people/{person}', [PersonController::class, 'destroy'])->name('people.destroy');
+
+// add endpoints for staff
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
+Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+Route::get('/staff/{staff}', [StaffController::class, 'show'])->name('staff.show');
+Route::get('/staff/{staff}/edit', [StaffController::class, 'edit'])->name('staff.edit');
+Route::put('/staff/{staff}', [StaffController::class, 'update'])->name('staff.update');
+Route::delete('/staff/{staff}', [StaffController::class, 'destroy'])->name('staff.destroy');
