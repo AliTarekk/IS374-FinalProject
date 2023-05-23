@@ -17,7 +17,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'GPA' => $this->faker->randomFloat(2,1, 4),
+            'HoursAchieved'=> $this->faker->numberBetween(0,120),
+            'PersonId' => $this->faker->numberBetween(1,10)
+
         ];
     }
 }

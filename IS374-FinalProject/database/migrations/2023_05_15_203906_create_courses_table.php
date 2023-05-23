@@ -16,8 +16,11 @@ return new class extends Migration
             $table->integer('CreditHours');
             $table->integer('MinStudents');
             $table->string('CourseTitle');
-            $table->foreign('DepartmentId')->references('DepartmentId')->on('departments');
-            $table->foreign('CoordinatorId')->references('CoordinatorId')->on('FullTimeCoordinator');
+            // $table->foreign('DepartmentId')->references('DepartmentId')->on('departments');
+            $table->foreignId('DepartmentId')->constrained(
+                table: 'departments', column: 'DepartmentId',
+            );
+            // $table->foreign('CoordinatorId')->references('CoordinatorId')->on('FullTimeCoordinator');
             $table->timestamps();
         });
     }
