@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
             PersonSeeder::class,
             StudentSeeder::class,
             StaffSeeder::class,
+            DepartmentSeeder::class,
+            FacultySeeder::class,
             CourseSeeder::class,
             EnrollSeeder::class,
-            FacultySeeder::class,
             RoomSeeder::class,
             SectionSeeder::class,
-            DepartmentSeeder::class,
         ]);
     }
 }
