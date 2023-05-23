@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
@@ -32,13 +33,21 @@ class SectionController extends Controller
     {
         $validated = $request->validate([
 			'MaxStudents'=>'required|numeric|min:10|max:30',
-        'Day'=>'required|numeric|min:0|max:6',
+        'Day'=>'required|string',
         'Period'=>'required|numeric|min:1|max:6',
-        'StaffId'=> 'required|exists:staff,StaffId',,
+        'StaffId'=> 'required|exists:staff,StaffId',
         'CourseCode'=> 'required|exists:courses,CourseCode',
         'RoomNumber'=> 'required|exists:rooms,RoomNumber'
         ]);
 
+
+        /*
+        //$sections=[SectionController::class,'index'];
+        $sections=index();
+        if($request-> 'Period' == $sections->"Period" && $request->'RoomNumber' == $sections->"RoomNumber"){
+               //redirect with not validated
+        }
+        */
         Section::create($validated);
         
         return redirect()->route('sections.index')->with('status',"Section Inserted Successfully");
@@ -67,11 +76,11 @@ class SectionController extends Controller
     {
         $validated = $request->validate([
 			'MaxStudents'=>'required|numeric|min:10|max:30',
-        'Day'=>'required|enum|min:0|max:6',//enum
+        'Day'=>'required|string',//enum
         'Period'=>'required|numeric|min:1|max:6',
-        'StaffId'=> 'required|exists:staff, StaffId',,
-        'CourseCode'=> 'required|exists:courses, CourseCode',
-        'RoomNumber'=> 'required|exists:rooms, RoomNumber'
+        'StaffId'=> 'required|exists:staff,StaffId',
+        'CourseCode'=> 'required|exists:courses,CourseCode',
+        'RoomNumber'=> 'required|exists:rooms,RoomNumber'
         ]);
 
         $section->update($validated);

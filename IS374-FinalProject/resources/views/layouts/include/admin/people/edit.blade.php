@@ -21,12 +21,12 @@
                 <label >Birthdate</label>
                 <input type="date" class="form-control" name="Birthdate" value="{{ $person->Birthdate }}">
                 <label >Gender</label>
-                <select name="Gender">
+                <select name="Gender" value="{{ $person->Gender }}">
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
                 </select>
                 <label >Person type</label>
-                <select name="PersonType">
+                <select name="PersonType" value="{{ $person->PersonType }}">
                     <option value='Staff'>Staff</option>
                     <option value='Student'>Student</option>
                 </select>

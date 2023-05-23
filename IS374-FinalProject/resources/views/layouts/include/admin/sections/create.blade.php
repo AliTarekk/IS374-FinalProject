@@ -26,11 +26,26 @@
         <form action="{{ route('sections.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label>section Number</label>
+                <label>section maxstudent</label>
                 <input type="number" class="form-control" name="MaxStudent" placeholder="Enter maximum capacity">
+                <label>period</label>
                 <input type="number" class="form-control" name="Period" placeholder="Enter period">
-                <input type="text" class="form-control" name="Day" placeholder="Enter day">
-                <input type="number" class="form-control" name="Period" placeholder="Enter period">
+                <label>section StaffId</label>
+                <input type="number" class="form-control" name="StaffId" placeholder="Enter period">
+                <label>section CourseCode</label>
+                <input type="number" class="form-control" name="CourseCode" placeholder="Enter period">
+                <label>section RoomNumber</label>
+                <input type="number" class="form-control" name="RoomNumber" placeholder="Enter period">
+                <select name="Day">
+                    <option value='Sunday'>Sunday</option>
+                    <option value='Monday'>Monday</option>
+                    <option value='Tuesday'>Tuesday</option>
+                    <option value='Wednesday'>Wednesday</option>
+                    <option value='Thursday'>Thursday</option>
+                    <option value='Friday'>Friday</option>
+                    <option value='Saturday'>Saturday</option>
+                </select>
+                
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

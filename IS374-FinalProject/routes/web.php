@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
@@ -75,3 +77,12 @@ Route::get('/people/{person}', [PersonController::class, 'show'])->name('people.
 Route::get('/people/{person}/edit', [PersonController::class, 'edit'])->name('people.edit');
 Route::put('/people/{person}', [PersonController::class, 'update'])->name('people.update');
 Route::delete('/people/{person}', [PersonController::class, 'destroy'])->name('people.destroy');
+
+// add endpoints for staff
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
+Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+Route::get('/staff/{staff}', [StaffController::class, 'show'])->name('staff.show');
+Route::get('/staff/{staff}/edit', [StaffController::class, 'edit'])->name('staff.edit');
+Route::put('/staff/{staff}', [StaffController::class, 'update'])->name('staff.update');
+Route::delete('/staff/{staff}', [StaffController::class, 'destroy'])->name('staff.destroy');

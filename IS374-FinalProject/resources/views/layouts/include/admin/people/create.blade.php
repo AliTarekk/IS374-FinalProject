@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-12">
-        <h1>Create a new person</h1>
+        <h1>Create a new Person</h1>
         <p><a href="{{ route('people.index') }}">Return to all people</a></p>
     </div>
 </div>
@@ -26,25 +26,25 @@
         <form action="{{ route('people.store') }}" method="POST">
             @csrf
             <div class="form-group">
-            <label >First name</label>
+                <label >First name</label>
                 <input type="text" class="form-control" name="FirstName" >
                 <label >Last name</label>
                 <input type="text" class="form-control" name="LastName" >
                 <label >Email</label>
                 <input type="email" class="form-control" name="email" >
                 <label >Birthdate</label>
-                <input type="date" class="form-control" name="Birthdate">
+                <input type="date" class="form-control" name="Birthdate" >
                 <label >Gender</label>
                 <select name="Gender">
-                    <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
+                    <option value='Male'>Male</option>
                 </select>
-                <label >Person type</label>
+                <label >PersonType</label>
                 <select name="PersonType">
                     <option value='Staff'>Staff</option>
                     <option value='Student'>Student</option>
                 </select>
-
+                
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
