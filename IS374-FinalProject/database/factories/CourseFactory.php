@@ -17,7 +17,10 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'CreditHours' => $this->faker->randomFloat(3, 1.5, 4.0),
+            'MinStudents' => $this->faker->numberBetween(15, 30),
+            'CourseTitle' => $this->faker->name(),
+            'DepartmentId' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

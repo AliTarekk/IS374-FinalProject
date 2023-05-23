@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Faculty;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'Name' => $this->faker->word,
+            'FacultyId' => $this->faker->randomElement(Faculty::pluck('FacultyId')->toArray()),
         ];
     }
 }

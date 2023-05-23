@@ -20,7 +20,6 @@ class StudentFactory extends Factory
             'GPA' => $this->faker->randomFloat(2,1, 4),
             'HoursAchieved'=> $this->faker->numberBetween(0,120),
             'PersonId' => $this->faker->numberBetween(1,10)
-
         ];
     }
 }

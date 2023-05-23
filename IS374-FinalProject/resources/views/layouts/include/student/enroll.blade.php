@@ -1,4 +1,4 @@
-@extends("layouts.main")
+@extends("main")
 
 @section("content")
     <div class="text-center m-5">

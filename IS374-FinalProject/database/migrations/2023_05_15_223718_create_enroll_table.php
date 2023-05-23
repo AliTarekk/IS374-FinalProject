@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         // pivot table to map many-to-many relationship course_student
-        Schema::create('enroll', function (Blueprint $table) {
+        Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
             // $table->foreign('StudentId')->references('StudentId')->on('students');
             $table->foreignId('StudentId')->constrained(
@@ -22,10 +22,10 @@ return new class extends Migration
             $table->foreignId('CourseCode')->constrained(
                 table: 'courses', column: 'CourseCode',
             );
-            $table->double('FirstMidterm');
-            $table->double('SecondMidterm');
-            $table->double('CourseWork');
-            $table->enum('Grade', ['A', 'B', 'C', 'D', 'F', 'U']);
+            $table->double('FirstMidterm')->default(0);
+            $table->double('SecondMidterm')->default(0);
+            $table->double('CourseWork')->default(0);
+            $table->enum('Grade', ['A', 'B', 'C', 'D', 'F', 'U'])->default('U');
             $table->timestamps();
         });
     }

@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
             PersonSeeder::class,
             StudentSeeder::class,
             StaffSeeder::class,
+            FacultySeeder::class,
+            DepartmentSeeder::class,
+            CourseSeeder::class,
+            EnrollSeeder::class
         ]);
     }
 }
