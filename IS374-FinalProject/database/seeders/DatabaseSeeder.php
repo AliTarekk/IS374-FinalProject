@@ -22,15 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PersonSeeder::class,
             StudentSeeder::class,
-<<<<<<< HEAD
-            FacultySeeder::class,
-            DepartmentSeeder::class,
-            CourseSeeder::class,
-            enrollSeeder::class,
-
-=======
             StaffSeeder::class,
->>>>>>> b4e4470f52a0c2d719b8bc9003341ff382d6b6d2
         ]);
     }
 }

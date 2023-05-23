@@ -101,44 +101,23 @@
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>
                         <div class="collapsible-body left-sub-menu">
                             <ul>
-                                <li><a href="{{asset('/build/assets/admin-all-courses.html')}}">All Course</a>
+                                <li><a href="{{route('admin_all_course')}}">All Course</a>
                                 </li>
-                                <li><a href="{{asset('/build/assets/admin-add-courses.html')}}">Add New Course</a>
-                                </li>
-                                <li><a href="{{asset('/build/assets/admin-trash-courses.html')}}">Trash Course</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
-                        <div class="collapsible-body left-sub-menu">
-                            <ul>
-                                <li><a href="{{asset('/build/assets/admin-user-all.html')}}">All Users</a>
-                                </li>
-                                <li><a href="{{asset('/build/assets/admin-user-add.html')}}">Add New user</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                                <li><a href="{{route('admin_new_course')}}">Add New Course</a>
 
-                    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
-                        <div class="collapsible-body left-sub-menu">
-                            <ul>
-                                <li><a href="{{asset('/build/assets/admin-main-menu.html')}}">Main menu</a></li>
-                                <li><a href="{{asset('/build/assets/admin-about-menu.html')}}">About menu</a></li>
-                                <li><a href="{{asset('/build/assets/admin-admission-menu.html')}}">Admission menu</a></li>
-                                <li><a href="{{asset('/build/assets/admin-all-menu.html')}}">All page menu</a></li>
                             </ul>
                         </div>
-                    </li>
+                   
+
+
 
 
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Students</a>
                         <div class="collapsible-body left-sub-menu">
                             <ul>
-                                <li><a href="{{asset('/build/assets/admin-user-all.html')}}">All Students</a>
+                                <li><a href="{{route('admin_details_student')}}">All Students</a>
                                 </li>
-                                <li><a href="{{asset('/build/assets/admin-user-add.html')}}">Add New Students</a>
+                                <li><a href="{{route('admin_add_student')}}">Add New Students</a>
                                 </li>
                             </ul>
                         </div>
@@ -149,6 +128,18 @@
             </div>
         </div>
 
-
+ <!--== BODY INNER CONTAINER ==-->
+ <div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="{{route('dashboard')}}"> Dashboard</a>
+            </li>
+            <li class="page-back"><a href="{{route('dashboard')}}"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
 
 

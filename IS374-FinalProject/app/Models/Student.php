@@ -11,8 +11,6 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "StudentId";
-
     protected $fillable = [
         'GPA',
         'HoursAchieved',
@@ -22,8 +20,8 @@ class Student extends Model
 
     public function courses(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class, 'enrolls', 'StudentId', 'CourseCode')->withPivot([
-            'StudentId','Grade','FirstMidterm','SecondMidterm','CourseWork', //, 'created_at', 'updated_at'
+        return $this->belongsToMany(Course::class)->as('enroll')->withPivot([
+            'Grade','FirstMidterm','SecondMidterm','CourseWork', //, 'created_at', 'updated_at'
         ])->withTimestamps();
     }
     public function enrolls(): HasMany

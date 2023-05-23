@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Faculty;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +12,6 @@ class FacultySeeder extends Seeder
      */
     public function run(): void
     {
-        Faculty::factory(10)->create();
+        //
     }
 }

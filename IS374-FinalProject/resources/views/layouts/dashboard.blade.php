@@ -1,43 +1,10 @@
 @extends("layouts.main")
 
 @section("content")
-    <!--SECTION START-->
-    <section>
-        <div class="pro-cover">
-        </div>
-        <div class="pro-menu">
-            <div class="container">
-                <div class="col-md-9 col-md-offset-3">
-                    <ul>
-                        <li><a href="dashboard.html" class="pro-act">My Dashboard</a></li>
-                        <li><a href="db-profile.html">Profile</a></li>
-                        <li><a href="db-courses.html">Courses</a></li>
-                        <li><a href="db-exams.html">Exams</a></li>
-                        <li><a href="db-time-line.html">Time Line</a></li>
-                        <li><a href="#">Entry</a></li>
-                        <li><a href="#">Notifications</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="stu-db">
-            <div class="container pg-inn">
-                <div class="col-md-3">
-                    <div class="pro-user">
-                        <img src="{{asset('/build/assets/images/user.jpg')}}" alt="user">
-                    </div>
-                    <div class="pro-user-bio">
-                        <ul>
-                            <li>
-                                <h4>Emily Jessica</h4>
-                            </li>
-                            <li>Student Id: ST17241</li>
-                            <li><a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a></li>
-                        </ul>
-                    </div>
-                </div>
+
+
+
+
                 <div class="col-md-9">
                     <div class="udb">
 
