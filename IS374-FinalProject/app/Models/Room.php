@@ -11,6 +11,7 @@ class Room extends Model
     use HasFactory;
 
     protected $primaryKey='RoomNumber';
+    public $incrementing = false;
 
     protected $fillable = [
         'RoomNumber',
@@ -21,5 +22,4 @@ class Room extends Model
     {
         return $this->hasOne(Section::class);
     }
-    public $incrementing = false;
 }

@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-12">
         <h1>All Departments</h1>
-        <p><a href="{{ route('departments.create') }}">Create a new Faculty</a></p>
+        <p><a href="{{ route('departments.create') }}">Create a new Department</a></p>
     </div>
 </div>
 
