@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Faculty;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Faculty;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\department>
