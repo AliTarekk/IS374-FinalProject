@@ -10,7 +10,11 @@ class Room extends Model
 {
     use HasFactory;
 
+    protected $primaryKey='RoomNumber';
+    public $incrementing = false;
+
     protected $fillable = [
+        'RoomNumber',
         'MaxCapacity'
     ];
     

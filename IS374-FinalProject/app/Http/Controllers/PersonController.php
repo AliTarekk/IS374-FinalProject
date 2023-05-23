@@ -13,7 +13,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        //
+        $people = Person::all()->sortBy('PersonId');
+        return view('layouts.include.admin.people.index', ['people' => $people]);
     }
 
     /**
@@ -21,7 +22,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.include.admin.people.create');
     }
 
     /**
@@ -29,7 +30,18 @@ class PersonController extends Controller
      */
     public function store(StorePersonRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'FirstName' => 'required|string',
+			'LastName' => 'required|string',
+            'email'=>'required|email',
+            'Birthdate'=>'required|date',
+            'PersonType'=>'required|string',
+            'Gender'=>'required|string'
+        ]);
+        
+        Person::create($validated);
+        
+        return redirect()->route('people.index')->with('status',"person Inserted Successfully");
     }
 
     /**
@@ -37,7 +49,7 @@ class PersonController extends Controller
      */
     public function show(Person $person)
     {
-        //
+        return view('layouts.include.admin.people.show', ['person' => $person]);
     }
 
     /**
@@ -45,7 +57,7 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        return view('layouts.include.admin.people.edit', compact('person'));
     }
 
     /**
@@ -53,7 +65,18 @@ class PersonController extends Controller
      */
     public function update(UpdatePersonRequest $request, Person $person)
     {
-        //
+        $validated = $request->validate([
+            'FirstName' => 'required|string',
+			'LastName' => 'required|string',
+            'email'=>'required|email',
+            'Birthdate'=>'required|date',
+            'PersonType'=>'required|string',
+            'Gender'=>'required|string'
+        ]);
+
+        $person->update($validated);
+
+        return redirect()->route('people.index')->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -61,6 +84,8 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        Person::destroy($person->PersonId);
+
+        return redirect()->back()->with('status',"Record Deleted Successfully");
     }
 }

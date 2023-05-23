@@ -17,7 +17,8 @@ class RoomFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // 'RoomNumber' => $this->faker->numberBetween(100,500),
+            'MaxCapacity' => $this->faker->numberBetween(10,1000),
         ];
     }
 }

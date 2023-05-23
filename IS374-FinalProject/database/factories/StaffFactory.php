@@ -17,7 +17,11 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'Title' => $this->faker->randomElement(['Instructor', 'Professor','AssistantProfessor','AssociateProfessor']),
+            'EmploymentType' => $this->faker->randomElement(['FullTime', 'PartTime']),
+            'PayRate' => $this->faker->randomFloat(2, 0, 1000),
+            'Salary' => $this->faker->randomFloat(2, 0, 100000),
+            'PersonId' => $this->faker->randomNumber(),
         ];
     }
 }

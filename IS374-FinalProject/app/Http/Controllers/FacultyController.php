@@ -16,7 +16,7 @@ class FacultyController extends Controller
     public function index()
     {
         $faculties = Faculty::all()->sortBy('FacultyId');
-        return view('', ['faculties' => $faculties]);
+        return view('layouts.include.admin.faculties.index', ['faculties' => $faculties]);
     }
 
     /**
@@ -25,7 +25,7 @@ class FacultyController extends Controller
      //create-> bywdy el view bas
      public function create()
     {
-        return view('');
+        return view('layouts.include.admin.faculties.create');
     }
 
     /**
@@ -40,7 +40,12 @@ class FacultyController extends Controller
         ]);
 
         //fe satr naaa's plus nkhale el name lowercase kolo abl ma a-store fe el db
-        return redirect()->back()->with('status',"Student Inserted Successfully");
+        $validated['Name'] = strtolower($validated['Name']);
+
+        Faculty::create($validated);
+
+        // return redirect()->back()->with('status',"Student Inserted Successfully");
+        return redirect()->route('faculties.index')->with('status',"Faculty Inserted Successfully");
     }
 
     /**
@@ -50,7 +55,7 @@ class FacultyController extends Controller
      //show-> showing only one 
     public function show(Faculty $faculty)
     {
-        return view('', ['faculty' => $faculty]);
+        return view('layouts.include.admin.faculties.show', ['faculty' => $faculty]);
     }
 
     /**
@@ -60,7 +65,7 @@ class FacultyController extends Controller
     
      public function edit(Faculty $faculty)
     {
-        return view('', ['faculty' => $faculty]);
+        return view('layouts.include.admin.faculties.edit', compact('faculty'));
     }
 
     /**
@@ -74,7 +79,7 @@ class FacultyController extends Controller
 
         $faculty->update($validated);
 
-        return redirect()->back()->with('status',"Record Updated Successfully");
+        return redirect()->route('faculties.index')->with('status',"Record Updated Successfully");
     }
 
     /**
@@ -82,7 +87,7 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        Faculty::destroy($faculty->id);
+        Faculty::destroy($faculty->FacultyId);
 
         return redirect()->back()->with('status',"Record Deleted Successfully");
     }
