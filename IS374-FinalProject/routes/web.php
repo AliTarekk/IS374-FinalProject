@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EnrollController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,18 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name("dashboard");
+
+Route::get('/', [HomeController::class, "index"])->name('home');
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('layouts.admin');
 })->name("admin");
 
-Route::get('/student/dashboard/{id}', [StudentController::class, 'index_enroll'])->name("student.dashboard");
 
-Route::get('/student/enroll', [StudentController::class, 'create_enroll'])->name("student.enroll");
-Route::get('/student/enroll/index', [StudentController::class, 'index_enroll'])->name("student.index");
-Route::get('/student/enroll/add', [StudentController::class, 'add_enroll'])->name("student.add");
-Route::post('/student/enroll/store', [StudentController::class, 'store_enroll'])->name("student.store");
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Route::get('/student/dashboard/{id}', [EnrollController::class, 'index'])->name("student.dashboard");
+
+Route::get('/student/enroll', [EnrollController::class, 'create'])->name("student.enroll");
+// Route::get('/student/enroll/index', [EnrollController::class, 'index'])->name("student.index");
+Route::post('/student/enroll/store', [EnrollController::class, 'store'])->name("student.store");
+
+require __DIR__.'/auth.php';

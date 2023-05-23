@@ -1,5 +1,5 @@
 
-@extends("mainn")
+@extends("layouts.mainn")
 
 @section("cont")
             <!--== BODY INNER CONTAINER ==-->

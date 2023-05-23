@@ -35,13 +35,13 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
 			'HoursAchieved' => 'required|numeric|min:0|max:200',
-            'AdvisorId' => 'required', //needs exists:Advisor, id
+            // 'AdvisorId' => 'required', //needs exists:Advisor, id
             'PersonId' => 'required|exists:people, PersonId',
         ]);
 
         Student::create([
             'HoursAchieved' => $validated['HoursAchieved'],
-            'AdvisorId' => $validated['AdvisorId'],
+            // 'AdvisorId' => $validated['AdvisorId'],
             'PersonId' => $validated['PersonId'],
         ]);
 
@@ -72,7 +72,7 @@ class StudentController extends Controller
         $validated = $request->validate([
             'GPA' => 'numeric|min:1.0|max:4.0',
 			'HoursAchieved' => 'required|numeric|min:0|max:200',
-            'AdvisorId' => 'required', //needs exists:Advisor, id
+            // 'AdvisorId' => 'required', //needs exists:Advisor, id
             'PersonId' => 'required|exists:people, PersonId',
         ]);
 
@@ -89,47 +89,5 @@ class StudentController extends Controller
         Student::destroy($student->id);
 
         return redirect()->back()->with('status',"Record Deleted Successfully");
-    }
-
-    public function create_enroll(Enroll $enroll, Request $request)
-    {
-        $courses = Course::all();
-        return view('layouts.include.student.enroll', compact('courses'));
-    }
-
-    public function store_enroll(Enroll $enroll, Request $request)
-    {
-        // session('StudentId', 1);
-        // dd(session());
-        $validated = $request->validate([
-			'CourseCode' => 'required|exists:courses,CourseCode',
-        ]);
-        // dd($enroll);
-        $enroll->create($validated);
-        return view('enroll-show', ['enroll' => Enroll::all()->sortBy('CourseCode')])->with('success', "Course was Added Successfully");
-    }
-
-    public function enroll(Enroll $enroll, Request $request){
-        $validated = $request->validate([
-            'StudentId' => 'required|exists:students, StudentId',
-			'CourseCode' => 'required|exists:courses, CourseCode',
-            'FirstMidterm' => 'required|min:0|max:30',
-            'SecondMidterm' => 'required|min:0|max:20',
-            'CourseWork' => 'required|min:0|max:10',
-            'Grade' => 'required',
-        ]);
-
-        $enroll->update($validated);
-
-        return redirect()->back()->with('status',"Record Updated Successfully");
-    }
-
-    public function index_enroll(Student $student)
-    {
-        // $students = Student::with('courses')->get();
-        // $students = Student::all();
-        // foreach ($students->courses as $course) {
-        //     echo $course->enrolls->created_at;
-        // }
     }
 }

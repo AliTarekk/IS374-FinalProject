@@ -35,4 +35,5 @@ class Course extends Model
     {
         return $this->belongsTo(department::class);
     }
+    
 }

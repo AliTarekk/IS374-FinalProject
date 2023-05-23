@@ -1,7 +1,7 @@
-@include("adminheader")
+@include("layouts.adminheader")
 
 @yield("cont")
 
-@include("adminfooter")
+@include("layouts.adminfooter")
 
 
