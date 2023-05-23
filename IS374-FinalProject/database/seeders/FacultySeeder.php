@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Faculty;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Faculty;
 
 class FacultySeeder extends Seeder
 {
