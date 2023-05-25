@@ -5,7 +5,7 @@
 <h1>Admin Dashboard</h1>
 
 <ul>
-    <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+    <li><a href="{{ route('admin.index') }}">Admin Dashboard</a></li>
     <li><a href="{{ route('faculties.index') }}">Admin Faculties</a></li>
     <li><a href="{{ route('departments.index') }}">Admin Departments</a></li>
     <li><a href="{{ route('courses.index') }}">Admin Courses</a></li>

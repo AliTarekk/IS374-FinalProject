@@ -95,7 +95,7 @@
             <!--== LEFT MENU ==-->
             <div class="sb2-13">
                 <ul class="collapsible" data-collapsible="accordion">
-                    <li><a href="{{route('admin')}}" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
+                    <li><a href="{{route('admin.index')}}" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                     </li>
 
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>

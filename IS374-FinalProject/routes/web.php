@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,11 @@ Route::get('/student_course', function () {
     return view('student_course');
 })->name("student_course");
 
+/*
 Route::get('/admin', function () {
     return view('layouts.admin');
 })->name("admin");
+*/
 
 Route::get('/student/dashboard/{id}', [StudentController::class, 'index_enroll'])->name("student.dashboard");
 
@@ -140,5 +143,8 @@ Route::get('/staff/{staff}', [StaffController::class, 'show'])->name('staff.show
 Route::get('/staff/{staff}/edit', [StaffController::class, 'edit'])->name('staff.edit');
 Route::put('/staff/{staff}', [StaffController::class, 'update'])->name('staff.update');
 Route::delete('/staff/{staff}', [StaffController::class, 'destroy'])->name('staff.destroy');
+
+// add endpoints for admin
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
 require __DIR__.'/auth.php';
