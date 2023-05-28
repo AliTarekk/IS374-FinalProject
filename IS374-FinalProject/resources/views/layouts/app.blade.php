@@ -1,3 +1,7 @@
+{{--###############################################################################--}}
+{{-- Related to Laravel Breeze Will be removed after setting up the authentication --}}
+{{--###############################################################################--}}
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>

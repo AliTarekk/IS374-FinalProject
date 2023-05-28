@@ -1,8 +1,6 @@
+@extends("layouts.main")
 
-@extends("mainnn")
-
-@section("conttt")
-
+@section("content")
     <!-- SLIDER -->
     <section>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -656,5 +654,4 @@
             </div>
         </div>
     </section>
-
-    @endsection
+@endsection

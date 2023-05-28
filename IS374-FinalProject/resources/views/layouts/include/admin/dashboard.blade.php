@@ -1,14 +1,6 @@
+@extends("layouts.admin")
 
-@extends("layouts.mainn")
-
-@section("cont")
-           
-
-
-
-
-
-
+@section("content")
                 <!--== DASHBOARD INFO ==-->
                 <div class="sb2-2-1">
                     <h2>Admin Dashboard</h2>
@@ -397,14 +389,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
-
-
                 <div class="sb2-2-3">
                     <div class="row">
                         <!--== Country Campaigns ==-->
@@ -473,12 +457,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
 
                         <!--== Country Campaigns ==-->
                         <div class="col-md-6">
@@ -574,9 +552,6 @@
                     </div>
                 </div>
 
-
-
-
                 <!--== User Details ==-->
                 <div class="sb2-2-3">
                     <div class="row">
@@ -599,15 +574,4 @@
 
         </div>
     </div>
-
-
-
-
-
-</body>
-
-
-</html>
-
-
 @endsection

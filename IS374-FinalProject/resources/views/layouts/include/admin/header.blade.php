@@ -107,10 +107,6 @@
 
                             </ul>
                         </div>
-                   
-
-
-
 
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Students</a>
                         <div class="collapsible-body left-sub-menu">
@@ -122,8 +118,6 @@
                             </ul>
                         </div>
                     </li>
-
-
                 </ul>
             </div>
         </div>

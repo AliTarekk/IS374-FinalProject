@@ -1,10 +1,6 @@
 @extends("layouts.main")
 
 @section("content")
-
-
-
-
                 <div class="col-md-9">
                     <div class="udb">
 
@@ -277,7 +273,6 @@
         </div>
     </section>
     <!--SECTION END-->
-
-    @endsection
+@endsection
 
 

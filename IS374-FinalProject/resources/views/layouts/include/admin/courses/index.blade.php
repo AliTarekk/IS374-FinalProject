@@ -1,4 +1,8 @@
 <!-- show all fetched courses -->
+
+@extends("layouts.admin")
+
+@section('content')
     <div class="row">
         <div class="col-12">
             <h1>Courses</h1>
@@ -54,3 +58,5 @@
                 </tbody>
             </table>
         </div>
+    </div>
+@endsection

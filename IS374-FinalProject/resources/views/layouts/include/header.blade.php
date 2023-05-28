@@ -14,8 +14,6 @@
     <link rel="shortcut icon" href="{{asset('/build/assets/images/fav.ico')}}" type="image/x-icon">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
-    {{-- BOOTSTRAP --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FONTAWESOME ICONS -->
     <link rel="stylesheet" href="{{asset('/build/assets/css/font-awesome.min.css')}}">
     <!-- ALL CSS FILES -->
@@ -186,6 +184,9 @@
                                 </li>
                                 <li><a href="all-courses.html">All Courses</a></li>
                                 <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
+                                <li class="cour-menu">
+                                    <a href="{{route('admin')}}" class="mm-arr">admin</a>
+                                </li>
                                 <li><a href="events.html">Events</a>
                                 </li>
                                 <li><a href="{{route('student.enroll')}}">Student</a>
@@ -245,38 +246,3 @@
     </section>
     <!--END HEADER SECTION-->
 
-    <!--SECTION START-->
-    <section>
-        <div class="pro-cover">
-        </div>
-        <div class="pro-menu">
-            <div class="container">
-                <div class="col-md-9 col-md-offset-3">
-                    <ul>
-                        <li><a href="{{route('dashboard')}}" class="pro-act">My Dashboard</a></li>
-                        <li><a href="{{route('student_profile')}}">Profile</a></li>
-                        <li><a href="{{route('student_course')}}">Courses</a></li>
-
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="stu-db">
-            <div class="container pg-inn">
-                <div class="col-md-3">
-                    <div class="pro-user">
-                        <img src="{{asset('/build/assets/images/user.jpg')}}" alt="user">
-                    </div>
-                    <div class="pro-user-bio">
-                        <ul>
-                            <li>
-                                <h4>Emily Jessica</h4>
-                            </li>
-                            <li>Student Id: ST17241</li>
-                            <li><a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a></li>
-                        </ul>
-                    </div>
-                </div>

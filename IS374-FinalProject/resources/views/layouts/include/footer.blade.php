@@ -8,8 +8,8 @@
             <p>more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
             <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
             <p></p>
-          </div>
-          </div>-->
+            </div>
+            </div>-->
         <div class="row wed-foot-link">
             <div class="col-md-4 foot-tc-mar-t-o">
                 <h4>Top Courses</h4>

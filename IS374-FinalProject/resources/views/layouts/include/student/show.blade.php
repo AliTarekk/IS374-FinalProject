@@ -1,13 +1,6 @@
-
-
-@extends("main")
+@extends("layouts.student")
 
 @section("content")
-
-
-
-
-
 
                         <div class="udb-sec udb-prof">
                             <h4><img src="images/icon/db1.png" alt="" /> My Profile</h4>
