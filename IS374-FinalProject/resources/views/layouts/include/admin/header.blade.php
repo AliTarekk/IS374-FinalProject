@@ -101,9 +101,9 @@
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>
                         <div class="collapsible-body left-sub-menu">
                             <ul>
-                                <li><a href="{{route('admin_all_course')}}">All Course</a>
+                                <li><a href="{{route('courses.index')}}">All Course</a>
                                 </li>
-                                <li><a href="{{route('admin_new_course')}}">Add New Course</a>
+                                <li><a href="{{route('courses.create')}}">Add New Course</a>
 
                             </ul>
                         </div>

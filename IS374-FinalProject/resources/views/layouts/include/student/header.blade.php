@@ -255,7 +255,7 @@
                     <ul>
                         <li><a href="{{route('dashboard')}}" class="pro-act">My Dashboard</a></li>
                         <li><a href="{{route('student_profile')}}">Profile</a></li>
-                        <li><a href="{{route('student_course')}}">Courses</a></li>
+                        <li><a href="{{route('student.store')}}">Courses</a></li>
 
 
                     </ul>

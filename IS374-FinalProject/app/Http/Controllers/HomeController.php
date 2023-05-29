@@ -32,7 +32,7 @@ class HomeController extends Controller
             // }
         }
         else{
-            return view('home');
+            return view('layouts.include.dashboard');
         }
         //     else {
         //         return view('index', ['newest' => Products::all()->sortByDesc('created_at')->take(8)]);
