@@ -24,6 +24,7 @@ class Student extends Model
             'Grade','FirstMidterm','SecondMidterm','CourseWork', //, 'created_at', 'updated_at'
         ])->withTimestamps();
     }
+
     public function enrolls(): HasMany
     {
         return $this->hasMany(enrolls::class);

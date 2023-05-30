@@ -1,8 +1,14 @@
 @extends("layouts.student")
 
 @section("content")
+    <!-- display status message -->
+    @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="text-center m-5">
-        <form action="{{route('student.store')}}" method="post">
+        <form action="{{route('enroll.store')}}" method="post">
             @csrf
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

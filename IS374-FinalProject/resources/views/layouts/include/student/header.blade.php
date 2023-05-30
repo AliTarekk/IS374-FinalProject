@@ -151,9 +151,10 @@
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="{{route('home')}}">Home</a>
+                                <li>
+                                    <a href="{{route('home')}}">Home</a>
                                 </li>
-                                    <li class="admi-menu">
+                                {{-- <li class="admi-menu">
                                     <a href="#" class="mm-arr">Admission</a>
                                     <!-- MEGA MENU 1 -->
                                     <div class="">
@@ -183,15 +184,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li><a href="all-courses.html">All Courses</a></li>
+                                </li> --}}
+                                {{-- <li><a href="all-courses.html">All Courses</a></li> --}}
                                 <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
-                                <li><a href="events.html">Events</a>
+                                {{-- <li><a href="events.html">Events</a>
+                                </li> --}}
+                                <li>
+                                    <a href="{{route('student.enroll')}}">Student</a>
                                 </li>
-                                <li><a href="{{route('student.enroll')}}">Student</a>
-                                </li>
-                                <li><a href="contact-us.html">Contact us</a>
-                                </li>
+                                {{-- <li><a href="contact-us.html">Contact us</a>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -253,9 +255,9 @@
             <div class="container">
                 <div class="col-md-9 col-md-offset-3">
                     <ul>
-                        <li><a href="{{route('dashboard')}}" class="pro-act">My Dashboard</a></li>
+                        <li><a href="{{route('student_profile')}}" class="pro-act">My Dashboard</a></li>
                         <li><a href="{{route('student_profile')}}">Profile</a></li>
-                        <li><a href="{{route('student.store')}}">Courses</a></li>
+                        <li><a href="{{route('enroll.store')}}">Courses</a></li>
 
 
                     </ul>

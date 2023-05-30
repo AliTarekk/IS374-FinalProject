@@ -17,11 +17,11 @@ return new class extends Migration
             // $table->foreign('StudentId')->references('StudentId')->on('students');
             $table->foreignId('StudentId')->constrained(
                 table: 'students', column: 'StudentId',
-            );
+            )->onDelete('cascade');
             // $table->foreign('CourseCode')->references('CourseCode')->on('courses');
             $table->foreignId('CourseCode')->constrained(
                 table: 'courses', column: 'CourseCode',
-            );
+            )->onDelete('cascade');
             $table->double('FirstMidterm')->default(0);
             $table->double('SecondMidterm')->default(0);
             $table->double('CourseWork')->default(0);

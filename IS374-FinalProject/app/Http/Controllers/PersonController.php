@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Person;
+use App\Models\Student;
 
 class PersonController extends Controller
 {
@@ -34,14 +35,18 @@ class PersonController extends Controller
             'FirstName' => 'required|string',
 			'LastName' => 'required|string',
             'email'=>'required|email',
-            'Birthdate'=>'required|date',
+            'Birthdate'=>'required|date|before:-13 years',
             'PersonType'=>'required|string',
             'Gender'=>'required|string'
         ]);
-        
-        Person::create($validated);
-        
-        return redirect()->route('people.index')->with('status',"person Inserted Successfully");
+        $PersonId = (Person::create($validated))['PersonId'];
+        if($request['PersonType'] == 'Student'){
+            Student::create(['PersonId' => $PersonId]);
+            return redirect()->route('student.index')->with('status',"person Inserted Successfully");
+        }
+        else{
+            return redirect()->route('people.index')->with('status',"person Inserted Successfully");
+        }
     }
 
     /**

@@ -27,7 +27,7 @@ use App\Http\Controllers\DepartmentController;
     // })->name("home");
 
 Route::get('/dashboard', function () {
-    return view('layouts.include.dashboard');
+    return view('layouts.include.admin.dashboard');
 })->name("dashboard");
 
 // Route::get('/dashboard', [StudentController::class, 'index_enroll'])->name("dashboard");
@@ -48,10 +48,14 @@ Route::get('/admin', function () {
 
 Route::get('/student/dashboard/{id}', [StudentController::class, 'index_enroll'])->name("student.dashboard");
 
+Route::get('/student/index', [StudentController::class, 'index'])->name("student.index");
+Route::get('student/create', [StudentController::class, 'create'])->name("student.create");
+Route::post('/student/store', [StudentController::class, 'store'])->name("student.store");
 Route::get('/student/enroll', [StudentController::class, 'create_enroll'])->name("student.enroll");
-Route::get('/student/enroll/index/{student}', [StudentController::class, 'index_enroll'])->name("student.index");
-Route::get('/student/enroll/add', [StudentController::class, 'add_enroll'])->name("student.add");
-Route::post('/student/enroll/store', [StudentController::class, 'store_enroll'])->name("student.store");
+Route::get('/student/enroll/index/{student}', [StudentController::class, 'index_enroll'])->name("enroll.index");
+Route::get('/student/enroll/add', [StudentController::class, 'add_enroll'])->name("enroll.add");
+Route::get('/student/enroll/store', [StudentController::class, 'store_enroll'])->name("enroll.store");
+Route::post('/student/enroll/store', [StudentController::class, 'store_enroll'])->name("enroll.store");
 
 // Route::get('/admin_all_course', function () {
 //     return view('admin_all_course');
@@ -61,13 +65,11 @@ Route::post('/student/enroll/store', [StudentController::class, 'store_enroll'])
 //     return view('layouts.include.courses.create');
 // })->name("admin_new_course");
 
-Route::get('student/create', function () {
-    return view('layouts.include.admin.student.create');
-})->name("admin_add_student");
 
-Route::get('student/index', function () {
-    return view('layouts.include.admin.student.index');
-})->name("admin_details_student");
+
+// Route::get('student/index', function () {
+//     return view('layouts.include.admin.student.index');
+// })->name("admin_details_student");
 
 
 Route::get('/student/dashboard/{id}', [StudentController::class, 'index_enroll'])->name("student.dashboard");
@@ -126,7 +128,7 @@ Route::delete('/sections/{section}', [SectionController::class, 'destroy'])->nam
 // add endpoints for people
 Route::get('/people', [PersonController::class, 'index'])->name('people.index');
 Route::get('/people/create', [PersonController::class, 'create'])->name('people.create');
-Route::post('/people', [PersonController::class, 'store'])->name('people.store');
+Route::post('/people/store', [PersonController::class, 'store'])->name('people.store');
 Route::get('/people/{person}', [PersonController::class, 'show'])->name('people.show');
 Route::get('/people/{person}/edit', [PersonController::class, 'edit'])->name('people.edit');
 Route::put('/people/{person}', [PersonController::class, 'update'])->name('people.update');

@@ -19,15 +19,15 @@ return new class extends Migration
             // $table->foreign('StaffId')->references('StaffId')->on('staff');
             $table->foreignId('StaffId')->constrained(
                 table: 'staff', column: 'StaffId',
-            );
+            )->onDelete('cascade');
             // $table->foreign('CourseCode')->references('CourseCode')->on('courses');
             $table->foreignId('CourseCode')->constrained(
                 table: 'courses', column: 'CourseCode',
-            );
+            )->onDelete('cascade');
             // $table->foreign('RoomNumber')->references('RoomNumber')->on('rooms');
             $table->foreignId('RoomNumber')->constrained(
                 table: 'rooms', column: 'RoomNumber',
-            );
+            )->onDelete('cascade');
             /*$table->increment('SectionId');
             $table->primary(array('SectionId', 'CourseCode'));*/
             $table->timestamps();

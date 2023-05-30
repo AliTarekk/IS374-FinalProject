@@ -6,6 +6,7 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Course;
 use App\Models\Enroll;
+use App\Models\Person;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,8 @@ class StudentController extends Controller
      */
     public function index(Student $student)
     {
-        $students = Student::all()->sortBy('StudentId');
-        return view('', ['students' => $students]);
+        $students = Person::join('students', 'people.PersonId', '=', 'students.PersonId')->where('PersonType', '=', 'Student')->get();
+        return view('layouts.include.admin.student.index', ['students' => $students]);
     }
 
     /**
@@ -25,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('layouts.include.admin.student.create');
     }
 
     /**
@@ -94,20 +95,29 @@ class StudentController extends Controller
     public function create_enroll(Enroll $enroll, Request $request)
     {
         $courses = Course::all();
-        return view('layouts.include.student.enroll', compact('courses'));
+        return view('layouts.include.enroll.create', compact('courses'));
     }
 
     public function store_enroll(Enroll $enroll, Request $request)
     {
         $random = collect()->range(1, 10);
-        $request['StudentId'] = collect($random)->random(); //until we make the login auth
+        $request['StudentId'] = 4; //collect($random)->random(); //until we make the login auth
+        $records = Enroll::all()->where('StudentId', '=', $request['StudentId'])->sortBy('CourseCode');
+        if($request->method() == 'GET'){
+            return view('layouts.include.enroll.show', ['enrolls' => $records]);
+        }
         $validated = $request->validate([
             'StudentId' => 'required|exists:students,StudentId',
 			'CourseCode' => 'required|exists:courses,CourseCode',
         ]);
-        // dd($request);
-        $enroll->create($validated);
-        return view('layouts.include.student.enroll-show', ['enrolls' => Enroll::all()->where('StudentId', '=', $request['StudentId'])->sortBy('CourseCode')])->with('success', "Course was Added Successfully");
+        // dd(count($records));
+        if(count($records) < 7){
+            $enroll->create($validated);
+            return view('layouts.include.enroll.show', ['enrolls' => $records])->with('status', "Course was Added Successfully");
+        }
+        else{
+            return redirect()->back()->with('status', "Maximum Number of Enrolled Courses Achieved");
+        }
     }
 
     public function enroll(Enroll $enroll, Request $request){

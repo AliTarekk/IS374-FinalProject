@@ -95,25 +95,31 @@
             <!--== LEFT MENU ==-->
             <div class="sb2-13">
                 <ul class="collapsible" data-collapsible="accordion">
-                    <li><a href="{{route('admin')}}" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
+                    <li>
+                        <a href="{{route('dashboard')}}" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                     </li>
 
-                    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>
+                    <li>
+                        <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>
                         <div class="collapsible-body left-sub-menu">
                             <ul>
-                                <li><a href="{{route('courses.index')}}">All Course</a>
+                                <li>
+                                    <a href="{{route('courses.index')}}">All Course</a>
                                 </li>
-                                <li><a href="{{route('courses.create')}}">Add New Course</a>
-
+                                <li>
+                                    <a href="{{route('courses.create')}}">Add New Course</a>
+                                </li>
                             </ul>
                         </div>
 
                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Students</a>
                         <div class="collapsible-body left-sub-menu">
                             <ul>
-                                <li><a href="{{route('admin_details_student')}}">All Students</a>
+                                <li>
+                                    <a href="{{route('student.index')}}">All Students</a>
                                 </li>
-                                <li><a href="{{route('admin_add_student')}}">Add New Students</a>
+                                <li>
+                                    <a href="{{route('student.create')}}">Add New Students</a>
                                 </li>
                             </ul>
                         </div>
@@ -127,13 +133,14 @@
     <!--== breadcrumbs ==-->
     <div class="sb2-2-2">
         <ul>
-            <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <li>
+                <a href="{{route('home')}}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
             </li>
-            <li class="active-bre"><a href="{{route('dashboard')}}"> Dashboard</a>
+            <li class="active-bre">
+                <a href="{{route('dashboard')}}">Dashboard</a>
             </li>
-            <li class="page-back"><a href="{{route('dashboard')}}"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            <li class="page-back">
+                <a href="{{route('dashboard')}}"><i class="fa fa-backward" aria-hidden="true"></i>Back</a>
             </li>
         </ul>
     </div>
-
-

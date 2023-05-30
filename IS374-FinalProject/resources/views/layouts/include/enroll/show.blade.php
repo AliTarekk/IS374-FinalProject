@@ -1,9 +1,9 @@
 @extends("layouts.student")
 
 @section("content")
+    <!-- display status message -->
     @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+        <div class="alert alert-success">
             {{ session('status') }}
         </div>
     @endif

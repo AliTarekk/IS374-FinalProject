@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->foreign('DepartmentId')->references('DepartmentId')->on('departments');
             $table->foreignId('DepartmentId')->constrained(
                 table: 'departments', column: 'DepartmentId',
-            );
+            )->onDelete('cascade');
             // $table->foreign('CoordinatorId')->references('CoordinatorId')->on('FullTimeCoordinator');
             $table->timestamps();
         });
